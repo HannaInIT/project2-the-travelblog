@@ -1,4 +1,3 @@
-
 const express = require("express");
 const router = express.Router();
 
@@ -30,22 +29,24 @@ router.get("/auth/signup", isLoggedOut, (req, res) => {
 console.log ("IN THE ROUTES AUTH 3  *********   ");
 
 // POST /auth/signup
-router.post("/auth", isLoggedOut, (req, res) => {
+router.post("/auth/login", isLoggedOut, (req, res) => {
   const { username, email, password } = req.body;
   
 
   // Check that username, email, and password are provided
   if (username === "" || email === "" || password === "") {
-    res.status(400).render("/signup", {
+    res.status(400).render("auth/signup", {
       errorMessage:
         "All fields are mandatory. Please provide your username, email and password.",
     });
 
     return;
   }
-  console.log ("IN THE ROUTES AUTH 4  *********");
+
+  // console.log ("IN THE ROUTES AUTH 4  *********");
+
   if (password.length < 6) {
-    res.status(400).render("/signup", {
+    res.status(400).render("auth/signup", {
       errorMessage: "Your password needs to be at least 6 characters long.",
     });
 
@@ -64,6 +65,7 @@ router.post("/auth", isLoggedOut, (req, res) => {
     return;
   }
   */
+  console.log ("IN THE ROUTES AUTH 4444 *********   ");
 
   // Create a new user - start by hashing the password
   bcrypt
@@ -71,6 +73,7 @@ router.post("/auth", isLoggedOut, (req, res) => {
     .then((salt) => bcrypt.hash(password, salt))
     .then((hashedPassword) => {
       // Create a user and save it in the database
+      
       return User.create({ username, email, password: hashedPassword });
     })
     .then((user) => {
@@ -95,9 +98,13 @@ router.get("/login", isLoggedOut, (req, res) => {
   res.render("auth/login");
 });
 
+console.log("I am here.....$$$$--1");
+
 // POST /auth/login
 router.post("/login", isLoggedOut, (req, res, next) => {
   const { username, email, password } = req.body;
+
+  console.log("I am here.....$$$$--2");
 
   // Check that username, email, and password are provided
   if (username === "" || email === "" || password === "") {

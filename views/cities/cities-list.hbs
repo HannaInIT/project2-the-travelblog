@@ -1,32 +1,28 @@
-<h1>Cities in our DB 123:</h1>
+<section class="cities-container">
+    <h1>Cities in Germany</h1>
 
-<ul class="horizontal-images"></ul>
-{{#each cities}}
-
-<section class="cities-summary">
-    <h2>{{this.title}}</h2>
-     <p>
-           <li>
-            <div class="border">
-                <span class="border"> <img src="/images/{{this.imageUrl}}"> <br/></span>
-            </div>
-        
-
-        Description: {{this.description}} <br />
-        Rating: {{this.rating}} <br />
-        Population: {{this.population}} <br />
-        Season: {{this.season}} <br />
-      
-
-        <a href="/cities/{{this._id}}">More details</a>
-        <a href="/cities/{{_id}}/edit">Edit</a>
-    </p>
-
-    <form action="/cities/{{_id}}/delete" method="POST">
-        <button>Delete</button>
-    </form>
-    
+    <div class="cities-summary">
+        <ul class="city-list">
+            {{#each cities}}
+            <li class="city">
+                <h2>{{this.title}}</h2>
+                <div class="city-details">
+                    <div class="border">
+                        <span class="border">
+                            <img src="/images/{{this.imageUrl}}" alt="{{this.title}} Image">
+                        </span>
+                    </div>
+                    <!--<span class="bold-text">Description: </span> {{this.description}} </br> -->
+                    <p>Rating: {{this.rating}}</p>
+                    <p>Population: {{this.population}}</p>
+                    <p>Season: {{this.season}}</p>
+                    <p><a href="/cities/{{this._id}}">More details </a> |  <a href="/cities/{{this._id}}/edit">Edit</a></p>
+                    <form action="/cities/{{this._id}}/delete" method="POST">
+                        <button>Delete</button>
+                    </form>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
 </section>
- </li>
-{{/each}}
-</ul>

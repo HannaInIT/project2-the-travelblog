@@ -1,7 +1,7 @@
 body {
-  padding: 50px;
+  padding: 20px;
   font: 14px “Lucida Grande”, Helvetica, Arial, sans-serif;
- /* background-image: url(“/images/germany1.jpg”); /* Replace with the actual image path */
+  background-image: url(“/cologne.JPG”); /* Replace with the actual image path */
   background-size: absolute ; /* Adjust as needed */
   background-size: 50%;
   background-repeat: repeat;
@@ -14,22 +14,33 @@ body {
   padding: 0;
 }
 .border img {
-  height: auto;
-  padding: 10px;
+  height: 250px;
+  padding: 0;
   align-items: center;
   width: 350px; /* Set the desired width for the container */
   text-align: center; /* Center the text horizontally */
   border-style: hidden;
 }
+.borderDetails img {
+  height: auto;
+  padding: 0;
+  align-items: center;
+  width: auto; 
+  text-align: center; 
+  border-style: hidden;
+}
+
 a {
   color: red
 }
+
+
 nav {
   display: flex;
   flex-direction: row;
   justify-content: right;
   padding-top: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 nav a {
   padding: 0 1rem;
@@ -44,3 +55,46 @@ nav a:last-child {
   border: 1px solid rgb(255, 213, 135);
   background-color: rgb(255, 213, 135);
 }
+
+
+.cities-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+}
+
+
+.city-details {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+  
+}
+
+
+.city-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left; 
+
+}
+
+
+.city {
+  width: 18rem;
+  margin: 20px; /* Add spacing between cities */
+  padding: 20px; /* Add padding within each city */
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+
+
+
+
