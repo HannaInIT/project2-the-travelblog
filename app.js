@@ -19,15 +19,19 @@ const app = express();
 require("./config")(app);
 
 const capitalize = require("./utils/capitalize");
-const projectName = "project2-the-travelblog";
+const projectName = "project2-the-travelblog--3";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
-
 // 👇 Start handling routes here
-app.use("/", require("./routes/index.routes"))
-app.use("/", require("./routes/auth.routes"))
-app.use("/", require("./routes/city.routes"))
+const indexRoutes = require("./routes/index.routes");
+app.use("/", indexRoutes);
+
+const authRoutes = require("./routes/auth.routes");
+app.use("/", authRoutes);
+
+const citiesRoutes = require("./routes/cities.routes");
+app.use("/", citiesRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
