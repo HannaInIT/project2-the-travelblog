@@ -1,5 +1,5 @@
-const express = require("express");
 
+const express = require("express");
 const router = express.Router();
 
 // ℹ️ Handles password encryption
@@ -12,18 +12,27 @@ const saltRounds = 10;
 // Require the User model in order to interact with the database
 const User = require("../models/User.model");
 
+console.log ("IN THE ROUTES AUTH 1*********");
+
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
+
+console.log ("IN THE ROUTES AUTH 2  *********");
+
 // GET /auth/signup
-router.get("/signup", isLoggedOut, (req, res) => {
+router.get("auth/signup", isLoggedOut, (req, res) => {
+  console.log ("IN THE ROUTES AUTH 3.1  *********");
   res.render("auth/signup");
 });
 
+console.log ("IN THE ROUTES AUTH 3  *********   ");
+
 // POST /auth/signup
-router.post("/signup", isLoggedOut, (req, res) => {
+router.post("/auth", isLoggedOut, (req, res) => {
   const { username, email, password } = req.body;
+  
 
   // Check that username, email, and password are provided
   if (username === "" || email === "" || password === "") {
@@ -34,7 +43,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
     return;
   }
-
+  console.log ("IN THE ROUTES AUTH 4  *********");
   if (password.length < 6) {
     res.status(400).render("auth/signup", {
       errorMessage: "Your password needs to be at least 6 characters long.",

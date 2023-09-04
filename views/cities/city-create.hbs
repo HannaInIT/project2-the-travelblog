@@ -1,0 +1,27 @@
+<h2>Create Cities 123</h2>
+
+<form method="POST" action="/cities/cities-create">
+    <label> Title:
+        <input type="text" name="title" />
+    </label>
+
+    <label> Description 1:
+        <textarea name="description" cols="30" rows="4"> </textarea>
+    </label>
+
+    <label> Rate 1:
+        <input type="number" name="rating" min="1" max="10" />
+    </label>
+
+    <label> Images:
+        <input type="file" name="imageUrl" accept="image/*" />
+    </label>
+
+      <label> Population:
+        <input type="number" name="population" />
+    </label>
+
+    <button type="submit"> Create </button>
+
+    <p>THE END OF CREATE</p>
+</form>

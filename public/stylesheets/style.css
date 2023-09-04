@@ -1,12 +1,46 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px “Lucida Grande”, Helvetica, Arial, sans-serif;
+ /* background-image: url(“/images/germany1.jpg”); /* Replace with the actual image path */
+  background-size: absolute ; /* Adjust as needed */
+  background-size: 50%;
+  background-repeat: repeat;
+  background-attachment: fixed; /* Fixed background scrolling */
 }
-
+/* Add styles for horizontal alignment */
+.horizontal-images {
+  display: flex; /* Use flexbox for horizontal alignment */
+  list-style: none; /* Remove default list styling */
+  padding: 0;
+}
+.border img {
+  height: auto;
+  padding: 10px;
+  align-items: center;
+  width: 350px; /* Set the desired width for the container */
+  text-align: center; /* Center the text horizontally */
+  border-style: hidden;
+}
 a {
-  color: #00b7ff;
+  color: red
 }
-
-h1 {
-  color: 15px;
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  padding-top: 1rem;
+  margin-bottom: 3rem;
+}
+nav a {
+  padding: 0 1rem;
+  border-right: 1px solid #999;
+}
+nav a:last-child {
+  border-right: none;
+}
+.warning {
+  padding: 1rem;
+  font-weight: bold;
+  border: 1px solid rgb(255, 213, 135);
+  background-color: rgb(255, 213, 135);
 }

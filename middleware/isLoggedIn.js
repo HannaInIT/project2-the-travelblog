@@ -4,5 +4,6 @@ module.exports = (req, res, next) => {
     return res.redirect("/auth/login");
   }
 
+  console.log ("IN THE iSLOGGED IN AUTH *********");
   next();
 };

@@ -1,0 +1,32 @@
+<h1>Cities in our DB 123:</h1>
+
+<ul class="horizontal-images"></ul>
+{{#each cities}}
+
+<section class="cities-summary">
+    <h2>{{this.title}}</h2>
+     <p>
+           <li>
+            <div class="border">
+                <span class="border"> <img src="/images/{{this.imageUrl}}"> <br/></span>
+            </div>
+        
+
+        Description: {{this.description}} <br />
+        Rating: {{this.rating}} <br />
+        Population: {{this.population}} <br />
+        Season: {{this.season}} <br />
+      
+
+        <a href="/cities/{{this._id}}">More details</a>
+        <a href="/cities/{{_id}}/edit">Edit</a>
+    </p>
+
+    <form action="/cities/{{_id}}/delete" method="POST">
+        <button>Delete</button>
+    </form>
+    
+</section>
+ </li>
+{{/each}}
+</ul>

@@ -1,0 +1,31 @@
+<h2>Edit the Cities: {{cities.title}}</h2>
+<p>I AM EDIT FORM *****</p>
+
+<form method="POST" action="/cities/{{cities._id}}/edit">
+    <label> Title:
+        <input type="text" name="title" value="{{cities.title}}" />
+    </label>
+
+    <label> Description:
+        <textarea name="description" cols="30" rows="4">{{cities.description}}</textarea>
+    </label>
+
+    <label> Rate:
+        <input type="number" name="rating" value="{{cities.rating}}" />
+    </label>
+
+     <label> Population:
+        <input type="number" name="population" value="{{cities.population}}" />
+    </label>
+
+     <label> Season:
+        <input type="enum" name="season" value= "{{cities.season}}" />
+    </label>
+
+    <label for="imageUrl">Image: {{cities.imageUrl}}</label>
+    <input type="file" id="imageUrl" name="imageUrl" value="{{cities.imageUrl}}">
+
+
+
+    <button>Save changes</button>
+</form>

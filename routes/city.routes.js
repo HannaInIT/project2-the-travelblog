@@ -1,15 +1,13 @@
+
 const express = require('express');
-const City = require("../models/City.model");
-const User = require("../models/User.model");
-
-const isLoggedIn = require("../middleware/isLoggedIn.js");
-
+const Cities = require("../models/Cities.model");
 const router = express.Router();
 
-// READ: display all books
+
+// READ: display all Cities
 router.get("/cities", (req, res, next) => {
-    City.find()
-        .populate("city")
+    Cities.find()
+        .populate("title")
         .then((citiesFromDB) => {
 
             const data = {
@@ -19,7 +17,7 @@ router.get("/cities", (req, res, next) => {
             res.render("cities/cities-list", data);
         })
         .catch((e) => {
-            console.log("Error getting list of cities from DB", e);
+            console.log("Error getting list of Cities from DB", e);
             next(e);
         })
 })
@@ -27,38 +25,43 @@ router.get("/cities", (req, res, next) => {
 
 
 // CREATE: display form
-router.get("/cities/create", isLoggedIn, (req, res, next) => {
-    Author.find()
-        .then( authorsFromDB => {
+router.get("/cities/cities-create", (req, res, next) => {
+    Cities.find()
+        .then( citiesFromDB => {
             const data = {
-                authors: authorsFromDB
+                cities: citiesFromDB
             }
-            res.render("books/book-create", data);
+            res.render("cities/cities-create", data);
         })
         .catch((e) => {
-            console.log("Error getting list of authors from DB", e);
+            console.log("Error getting list of Cities from DB", e);
             next(e);
         });
 });
 
 
-
 // CREATE: process form
-router.post("/books/create", isLoggedIn, (req, res, next) => {
+router.post("/cities/cities-create", (req, res, next) => {
 
-    const newBook = {
+    const newCities = {
         title: req.body.title,
         description: req.body.description,
-        author: req.body.author,
-        rating: req.body.rating
+        rating: req.body.rating,
+        imageUrl: req.body.imageUrl,
+        population : req.body.population,
+        season: req.body.season,
+       
+
     };
 
-    Book.create(newBook)
-        .then((newBook) => {
-            res.redirect("/books");
+    console.log("***** in the create form funciton");
+
+    Cities.create(newCities)
+        .then((newCities) => {
+            res.redirect("/cities");
         })
         .catch(e => {
-            console.log("error creating new book", e);
+            console.log("error creating new cities", e);
             next(e);
         });
 });
@@ -66,19 +69,20 @@ router.post("/books/create", isLoggedIn, (req, res, next) => {
 
 
 // UPDATE: display form
-router.get('/books/:bookId/edit', isLoggedIn, async (req, res, next) => {
-    const { bookId } = req.params;
+router.get('/cities/:citiesId/edit', async (req, res, next) => {
+    const { citiesId } = req.params;
 
     try {
-        const bookDetails = await Book.findById(bookId);
-        const authors = await Author.find();
+        const citiesDetails = await Cities.findById(citiesId);
 
+        console.log("*&*&*******  Cities ID 1  "+ citiesId);
+        
         const data = { 
-            book: bookDetails, 
-            authors: authors 
+            cities: citiesDetails, 
         }
 
-        res.render('books/book-edit.hbs', data)
+        res.render('cities/cities-edit', data)
+
     } catch(error){
         next(error)
     }
@@ -87,42 +91,40 @@ router.get('/books/:bookId/edit', isLoggedIn, async (req, res, next) => {
 
 
 // UPDATE: process form
-router.post('/books/:bookId/edit', isLoggedIn, (req, res, next) => {
-    const { bookId } = req.params;
-    const { title, description, author, rating } = req.body;
-
-    Book.findByIdAndUpdate(bookId, { title, description, author, rating }, { new: true })
-        .then(updatedBook => res.redirect(`/books/${updatedBook.id}`)) // go to the details page to see the updates
+router.post('/cities/:citiesId/edit', (req, res, next) => {
+    const { citiesId } = req.params;
+    const { title, description, rating, population, season, imageUrl } = req.body;
+    console.log("*&*&*******  Cities ID 2  ");
+    Cities.findByIdAndUpdate(citiesId, { title, description, rating, population, season, imageUrl }, { new: true })
+        // .then(updatedCities => res.redirect(`/cities/${updatedCities.id}`)) // go to the details page to see the updates
+        .then(() => res.redirect('/cities'))
         .catch(error => next(error));
 });
-
-
-
-// DELETE: delete book
-router.post('/books/:bookId/delete', isLoggedIn, (req, res, next) => {
-    const { bookId } = req.params;
-
-    Book.findByIdAndDelete(bookId)
-        .then(() => res.redirect('/books'))
-        .catch(error => next(error));
-});
-
-
 
 // READ: display details of one book
-router.get("/books/:bookId", (req, res, next) => {
-    const id = req.params.bookId;
-    Book.findById(id)
-        .populate("author")
-        .then(bookFromDB => {
-            res.render("books/book-details", bookFromDB);
+router.get("/cities/:citiesId", (req, res, next) => {
+    const id = req.params.citiesId;
+    Cities.findById(id)
+        .populate("title")
+        .then(citiesFromDB => {
+            res.render("cities/cities-details", citiesFromDB);
         })
         .catch((e) => {
-            console.log("Error getting book details from DB", e);
+            console.log("Error getting Cities details from DB", e);
             next(e);
         })
 
 })
+
+
+// DELETE: delete book
+router.post('/cities/:citiesId/delete', (req, res, next) => {
+    const { citiesId } = req.params;
+
+    Cities.findByIdAndDelete(citiesId)
+        .then(() => res.redirect('/cities'))
+        .catch(error => next(error));
+});
 
 
 module.exports = router;
