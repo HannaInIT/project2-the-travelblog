@@ -6,13 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{{appTitle}}</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
+   </head>
 
   <body>
+     <nav>
+         <a href="/">Home</a>
+         <a href="/cities">View Cities</a>
+        <select>
+        <option value="Stuttgart"><a href="/cities">Stuttgart</a></option>
+        <option value="Heidelberg">Heidelberg</option>
+        <option value="Munich">Munich</option>
+        <option value="Berlin">Berlin</option>
+        </select>
+         <a href="/cities/cities-create">Create new City</a>
+         <a href="/">About Us</a>
+           <a href="/login">Login </a>
+
+          
+      </nav>
 
     {{{body}}}
 
-    <script src="/js/script.js"></script>
+      <script src="/js/script.js"></script>
   </body>
-
-</html>

@@ -1,4 +1,3 @@
-
 const express = require('express');
 const Cities = require("../models/Cities.model");
 const router = express.Router();
@@ -101,7 +100,7 @@ router.post('/cities/:citiesId/edit', (req, res, next) => {
         .catch(error => next(error));
 });
 
-// READ: display details of one book
+// READ: display details of one city
 router.get("/cities/:citiesId", (req, res, next) => {
     const id = req.params.citiesId;
     Cities.findById(id)
@@ -117,7 +116,7 @@ router.get("/cities/:citiesId", (req, res, next) => {
 })
 
 
-// DELETE: delete book
+// DELETE: delete city
 router.post('/cities/:citiesId/delete', (req, res, next) => {
     const { citiesId } = req.params;
 
@@ -125,6 +124,5 @@ router.post('/cities/:citiesId/delete', (req, res, next) => {
         .then(() => res.redirect('/cities'))
         .catch(error => next(error));
 });
-
 
 module.exports = router;

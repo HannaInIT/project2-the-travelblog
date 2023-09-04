@@ -1,4 +1,3 @@
-
 const express = require("express");
 const router = express.Router();
 
@@ -22,9 +21,9 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 console.log ("IN THE ROUTES AUTH 2  *********");
 
 // GET /auth/signup
-router.get("auth/signup", isLoggedOut, (req, res) => {
+router.get("/auth/signup", isLoggedOut, (req, res) => {
   console.log ("IN THE ROUTES AUTH 3.1  *********");
-  res.render("auth/signup");
+  res.render("/auth/signup");
 });
 
 console.log ("IN THE ROUTES AUTH 3  *********   ");
@@ -36,7 +35,7 @@ router.post("/auth", isLoggedOut, (req, res) => {
 
   // Check that username, email, and password are provided
   if (username === "" || email === "" || password === "") {
-    res.status(400).render("auth/signup", {
+    res.status(400).render("/signup", {
       errorMessage:
         "All fields are mandatory. Please provide your username, email and password.",
     });
@@ -45,7 +44,7 @@ router.post("/auth", isLoggedOut, (req, res) => {
   }
   console.log ("IN THE ROUTES AUTH 4  *********");
   if (password.length < 6) {
-    res.status(400).render("auth/signup", {
+    res.status(400).render("/signup", {
       errorMessage: "Your password needs to be at least 6 characters long.",
     });
 
