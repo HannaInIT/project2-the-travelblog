@@ -22,11 +22,9 @@ console.log ("IN THE ROUTES AUTH 2  *********");
 
 // GET /auth/signup
 router.get("/auth/signup", isLoggedOut, (req, res) => {
-  console.log ("IN THE ROUTES AUTH 3.1  *********");
   res.render("/auth/signup");
 });
 
-console.log ("IN THE ROUTES AUTH 3  *********   ");
 
 // POST /auth/signup
 router.post("/auth/login", isLoggedOut, (req, res) => {
@@ -94,7 +92,7 @@ router.post("/auth/login", isLoggedOut, (req, res) => {
 });
 
 // GET /auth/login
-router.get("/login", isLoggedOut, (req, res) => {
+router.get("/auth/login", isLoggedOut, (req, res) => {
   res.render("auth/login");
 });
 
