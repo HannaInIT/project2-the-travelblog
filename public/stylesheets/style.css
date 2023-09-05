@@ -21,6 +21,7 @@ body {
   text-align: center; /* Center the text horizontally */
   border-style: hidden;
 }
+
 .borderDetails img {
   height: auto;
   padding: 0;
@@ -70,7 +71,6 @@ nav a:last-child {
   flex-direction: column;
   align-items: left;
   text-align: left;
-  
 }
 
 
@@ -83,7 +83,6 @@ nav a:last-child {
 
 }
 
-
 .city {
   width: 18rem;
   margin: 20px; /* Add spacing between cities */
@@ -94,7 +93,14 @@ nav a:last-child {
   font-weight: bold;
 }
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-
-
-
+.container {
+  width: 100%;
+  height: 100vh;
+}

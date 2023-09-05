@@ -1,52 +1,25 @@
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{{appTitle}}</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-   </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>{{appTitle}}</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
 
-  <body>
-     <nav>
-        <a href="/">Home</a>
-        <a href="/cities">Cities</a>
-        <select>
-        <option value="Stuttgart"><a href="/cities">Stuttgart</a></option>
-        <option value="Heidelberg">Heidelberg</option>
-        <option value="Munich">Munich</option>
-        <option value="Berlin">Berlin</option>
-        </select>
-        <a href="/cities/cities-create">Create new city</a>
-        <a href="/">About Us</a>
-        <a href="/login">Login </a>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/cities">Cities</a>
+    <a href="/cities/cities-create">Create new city</a>
+    <a href="/">Blogs</a>
+    <a href="/auth/signup">Signup</a>
+    <a href="/auth/login">Login</a>
+    <a href="/auth/logout">Logout</a>
+  </nav>
 
-          
-      </nav>
+  {{{body}}}
 
-    {{{body}}}
-
-      <script src="/js/script.js"></script>
-  </body>
-
-
-  
-
-
-{{!-- <nav>
-  <ul class="drop-down closed">
-    <li><a href="/cities" class="nav-button">Cities</a></li>
-    <li><a href="#">Aachen</a></li>
-    <li><a href="#">Berlin</a></li>
-    <li><a href="#">Cologne</a></li>
-    <li><a href="#">Dresden</a></li>
-    <li><a href="#">Hamburg</a></li>
-    <li><a href="#">Heidelberg</a></li>
-    <li><a href="#">Munich</a></li>
-    <li><a href="#">Rothenburg</a></li>
-  </ul>
-  <a href="/cities/cities-create">Create new City</a>
-        <a href="/">About Us</a>
-        <a href="/login">Login </a>
-</nav> --}}
+  <script src="/js/script.js"></script>
+</body>

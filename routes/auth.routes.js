@@ -11,25 +11,18 @@ const saltRounds = 10;
 // Require the User model in order to interact with the database
 const User = require("../models/User.model");
 
-console.log ("IN THE ROUTES AUTH 1*********");
-
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 
-console.log ("IN THE ROUTES AUTH 2  *********");
-
 // GET /auth/signup
 router.get("/auth/signup", isLoggedOut, (req, res) => {
-  console.log ("IN THE ROUTES AUTH 3.1  *********");
-  res.render("/auth/signup");
+  res.render("auth/signup");
 });
 
-console.log ("IN THE ROUTES AUTH 3  *********   ");
-
 // POST /auth/signup
-router.post("/auth/login", isLoggedOut, (req, res) => {
+router.post("/auth/signup", isLoggedOut, (req, res) => {
   const { username, email, password } = req.body;
   
 
@@ -43,8 +36,6 @@ router.post("/auth/login", isLoggedOut, (req, res) => {
     return;
   }
 
-  // console.log ("IN THE ROUTES AUTH 4  *********");
-
   if (password.length < 6) {
     res.status(400).render("auth/signup", {
       errorMessage: "Your password needs to be at least 6 characters long.",
@@ -53,19 +44,17 @@ router.post("/auth/login", isLoggedOut, (req, res) => {
     return;
   }
 
-  //   ! This regular expression checks password for special characters and minimum length
-  /*
-  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-  if (!regex.test(password)) {
-    res
-      .status(400)
-      .render("auth/signup", {
-        errorMessage: "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter."
-    });
-    return;
-  }
-  */
-  console.log ("IN THE ROUTES AUTH 4444 *********   ");
+  // This regular expression checks password for special characters and minimum length
+  
+  // const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  // if (!regex.test(password)) {
+  //   res
+  //     .status(400)
+  //     .render("auth/signup", {
+  //       errorMessage: "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter."
+  //   });
+  //   return;
+  // }
 
   // Create a new user - start by hashing the password
   bcrypt
@@ -94,14 +83,12 @@ router.post("/auth/login", isLoggedOut, (req, res) => {
 });
 
 // GET /auth/login
-router.get("/login", isLoggedOut, (req, res) => {
+router.get("/auth/login", isLoggedOut, (req, res) => {
   res.render("auth/login");
 });
 
-console.log("I am here.....$$$$--1");
-
 // POST /auth/login
-router.post("/login", isLoggedOut, (req, res, next) => {
+router.post("/auth/login", isLoggedOut, (req, res, next) => {
   const { username, email, password } = req.body;
 
   console.log("I am here.....$$$$--2");
@@ -159,7 +146,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 });
 
 // GET /auth/logout
-router.get("/logout", isLoggedIn, (req, res) => {
+router.get("/auth/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
     if (err) {
       res.status(500).render("auth/logout", { errorMessage: err.message });
