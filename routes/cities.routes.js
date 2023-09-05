@@ -95,10 +95,14 @@ router.post('/cities/:citiesId/edit', (req, res, next) => {
     const { citiesId } = req.params;
     const { title, description, rating, population, season, imageUrl } = req.body;
     console.log("*&*&*******  Cities ID 2  ");
-    Cities.findByIdAndUpdate(citiesId, { title, description, rating, population, season, imageUrl }, { new: true })
+    Cities.findById(citiesId)
+    .then((city) => {
+Cities.findByIdAndUpdate(citiesId, { title, description, rating, population, season, imageUrl: imageUrl ? imageUrl : city.imageUrl }, { new: true })
         // .then(updatedCities => res.redirect(`/cities/${updatedCities.id}`)) // go to the details page to see the updates
         .then(() => res.redirect('/cities'))
-        .catch(error => next(error));
+        
+    }).
+    catch(error => next(error));
 });
 
 // READ: display details of one city

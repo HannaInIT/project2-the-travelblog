@@ -1,27 +1,41 @@
-<h2>Create Cities 123</h2>
+<h2>Create City</h2>
 
 <form method="POST" action="/cities/cities-create">
-    <label> Title:
+
+<div class="border">
+    <p><label> Title:
         <input type="text" name="title" />
-    </label>
+    </label></p>
 
-    <label> Description 1:
-        <textarea name="description" cols="30" rows="4"> </textarea>
-    </label>
+    <p><label> Description:
+        <textarea name="description" cols="30" rows="2"> </textarea>
+    </label></p>
 
-    <label> Rate 1:
-        <input type="number" name="rating" min="1" max="10" />
-    </label>
+    <p><label> Rate :
+        <input type="number" name="rating" min="1" max="5" />
+    </label></p>
 
-    <label> Images:
+    <p><label> Images:
         <input type="file" name="imageUrl" accept="image/*" />
-    </label>
+    </label></p>
 
-      <label> Population:
+    <p><label> Population:
         <input type="number" name="population" />
-    </label>
+    </label></p>
+
+
+    <label for="season"> Season:
+    <select name="season" id="season">
+        <option value="spring">Spring</option>
+        <option value="summer">Summer</option>
+        <option value="autumn">Autumn</option>
+        <option value="winter">Winter</option>
+    </select>
+
+    </label></p>
 
     <button type="submit"> Create </button>
 
-    <p>THE END OF CREATE</p>
+    </div>
+
 </form>

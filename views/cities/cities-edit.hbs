@@ -2,30 +2,53 @@
 
 
 <form method="POST" action="/cities/{{cities._id}}/edit">
-    <label> Title:
+<div class="border">
+    <p><label> Title:
         <input type="text" name="title" value="{{cities.title}}" />
-    </label>
+    </label></p>
 
-    <label> Description:
+    <p><label> Description:
         <textarea name="description" cols="30" rows="4">{{cities.description}}</textarea>
-    </label>
+    </label></p>
 
-    <label> Rate:
+    <p><label> Rate:
         <input type="number" name="rating" value="{{cities.rating}}" />
-    </label>
+    </label></p>
 
-     <label> Population:
+     <p><label> Population:
         <input type="number" name="population" value="{{cities.population}}" />
-    </label>
+    </label></p>
 
-     <label> Season:
+   <!--  <p><label> Season:
         <input type="enum" name="season" value= "{{cities.season}}" />
-    </label>
+    </label></p>
+-->
 
-    <label for="imageUrl">Image: {{cities.imageUrl}}</label>
+    <label for="season">Season:
+        <select name="season" id="season">
+            <option value="spring" {% if cities.season === 'spring' %}selected{% endif %}>Spring</option>
+            <option value="summer" {% if cities.season === 'summer' %}selected{% endif %}>Summer</option>
+            <option value="autumn" {% if cities.season === 'autumn' %}selected{% endif %}>Autumn</option>
+            <option value="winter" {% if cities.season === 'winter' %}selected{% endif %}>Winter</option>
+        </select>
+   </label>
+   
+<!--
+    <p><label for="imageUrl">Image: {{cities.imageUrl}}</label></p>
     <input type="file" id="imageUrl" name="imageUrl" value="{{cities.imageUrl}}">
-
+-->
+    <p>
+        <label for="imageUrl">Current Image:</label>
+        <img src="/images/{{ cities.imageUrl }}" alt="Current Image">
+    </p>
+    <!-- Allow the user to upload a new image -->
+    <p>
+        <label for="imageUrl">New Image:</label>
+        <input type="file" id="imageUrl" name="imageUrl" value="{{ cities.imageUrl }}">
+    </p>
 
 
     <button>Save changes</button>
+</div>
+
 </form>
