@@ -1,4 +1,3 @@
-
 const express = require('express');
 const Cities = require("../models/Cities.model");
 const router = express.Router();
@@ -129,6 +128,5 @@ router.post('/cities/:citiesId/delete', (req, res, next) => {
         .then(() => res.redirect('/cities'))
         .catch(error => next(error));
 });
-
 
 module.exports = router;
