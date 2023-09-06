@@ -14,18 +14,21 @@
         <input type="number" name="rating" value="{{cities.rating}}" />
     </label>
 
-     <label> Population:
-        <input type="number" name="population" value="{{cities.population}}" />
-    </label>
-
-     <label> Season:
-        <input type="enum" name="season" value= "{{cities.season}}" />
-    </label>
-
     <label for="imageUrl">Image: {{cities.imageUrl}}</label>
     <input type="file" id="imageUrl" name="imageUrl" value="{{cities.imageUrl}}">
 
+    <label> Population:
+        <input type="number" name="population" value="{{cities.population}}" />
+    </label>
 
+    <label for="season"> Season:
+        <select id="seasons" value="{{cities.season}}">
+            <option label="Winter">Winter</option>
+            <option label="Spring">Spring</option>
+            <option label="Summer">Summer</option>
+            <option label="Autumn">Autumn</option>
+        </select>
+    </label>
 
     <button>Save changes</button>
 </form>
