@@ -11,17 +11,20 @@ const saltRounds = 10;
 // Require the User model in order to interact with the database
 const User = require("../models/User.model");
 
+
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 
-// GET /auth/signup
+
+// GET /auth/signup (SINGUP)
 router.get("/auth/signup", isLoggedOut, (req, res) => {
   res.render("auth/signup");
 });
 
-// POST /auth/signup
+
+// POST /auth/signup (SIGNUP)
 router.post("/auth/signup", isLoggedOut, (req, res) => {
   const { username, email, password } = req.body;
   
@@ -91,7 +94,7 @@ router.get("/auth/login", isLoggedOut, (req, res) => {
 router.post("/auth/login", isLoggedOut, (req, res, next) => {
   const { username, email, password } = req.body;
 
-  console.log("I am here.....$$$$--2");
+ 
 
   // Check that username, email, and password are provided
   if (username === "" || email === "" || password === "") {
@@ -118,7 +121,7 @@ router.post("/auth/login", isLoggedOut, (req, res, next) => {
       if (!user) {
         res
           .status(400)
-          .render("auth/login", { errorMessage: "Wrong credentials." });
+          .render("auth/signup", { errorMessage: "Not a Registered user : Please sign up" });
         return;
       }
 
@@ -129,7 +132,7 @@ router.post("/auth/login", isLoggedOut, (req, res, next) => {
           if (!isSamePassword) {
             res
               .status(400)
-              .render("auth/login", { errorMessage: "Wrong credentials." });
+              .render("auth/login", { errorMessage: "Wrong credentials.1234" });
             return;
           }
 
@@ -152,8 +155,12 @@ router.get("/auth/logout", isLoggedIn, (req, res) => {
       res.status(500).render("auth/logout", { errorMessage: err.message });
       return;
     }
-
-    res.redirect("/");
+    
+    //res.redirect("/");
+    res.render("auth/login", { errorMessage: "You are logged out !!" });
+    return;
+   
+    
   });
 });
 
