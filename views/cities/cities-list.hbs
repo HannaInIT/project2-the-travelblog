@@ -13,12 +13,10 @@
                 <div class="city-details">
                     <div class="border">
                         <span class="border">
-                            <img src="/images/{{this.imageUrl}}" alt="{{this.title}} Image">
+                            <img src="{{this.imageUrl}}" alt="{{this.title}} Image">
                         </span>
                     </div>
-                    <!--<span class="bold-text">Description: </span> {{this.description}} </br> -->
                     <p>Rating: {{this.rating}}</p>
-                    <p>Population: {{this.population}}</p>
                     <p>Season: {{this.season}}</p>
                     <p><a href="/cities/{{this._id}}">More details </a> |  <a href="/cities/{{this._id}}/edit">Edit</a></p>
                     <form action="/cities/{{this._id}}/delete" method="POST">

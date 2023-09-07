@@ -14,37 +14,14 @@
     <p><label> Rate:
         <input type="number" name="rating" value="{{cities.rating}}" />
     </label></p>
-
-     <p><label> Population:
-        <input type="number" name="population" value="{{cities.population}}" />
-    </label></p>
-
-   <!--  <p><label> Season:
-        <input type="enum" name="season" value= "{{cities.season}}" />
-    </label></p>
--->
-
-    <label for="season">Season:
-        <select name="season" id="season">
-            <option value="Spring" {% if cities.season === 'Spring' %}selected{% endif %}>Spring</option>
-            <option value="Summer" {% if cities.season === 'Summer' %}selected{% endif %}>Summer</option>
-            <option value="Autumn" {% if cities.season === 'Autumn' %}selected{% endif %}>Autumn</option>
-            <option value="Winter" {% if cities.season === 'Winter' %}selected{% endif %}>Winter</option>
-        </select>
-   </label>
    
-<!--
-    <p><label for="imageUrl">Image: {{cities.imageUrl}}</label></p>
-    <input type="file" id="imageUrl" name="imageUrl" value="{{cities.imageUrl}}">
--->
     <p>
         <label for="imageUrl">Current Image:</label>
-        <img src="/images/{{ cities.imageUrl }}" alt="Current Image">
+        <img src="{{ cities.imageUrl }}" alt="Current Image">
     </p>
-    <!-- Allow the user to upload a new image -->
     <p>
         <label for="imageUrl">New Image:</label>
-        <input type="file" id="imageUrl" name="imageUrl" value="{{ cities.imageUrl }}">
+        <input type="text" id="imageUrl" name="imageUrl" value="{{ cities.imageUrl }}" placeholder="please, provide a working link for the image">
     </p>
 
     <label for="season"> Season:
