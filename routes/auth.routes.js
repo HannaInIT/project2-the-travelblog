@@ -27,7 +27,7 @@ router.get("/auth/signup", isLoggedOut, (req, res) => {
 // POST /auth/signup (SIGNUP)
 router.post("/auth/signup", isLoggedOut, (req, res) => {
   const { username, email, password } = req.body;
-  
+
 
   // Check that username, email, and password are provided
   if (username === "" || email === "" || password === "") {
@@ -48,7 +48,7 @@ router.post("/auth/signup", isLoggedOut, (req, res) => {
   }
 
   // This regular expression checks password for special characters and minimum length
-  
+
   // const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   // if (!regex.test(password)) {
   //   res
@@ -65,7 +65,7 @@ router.post("/auth/signup", isLoggedOut, (req, res) => {
     .then((salt) => bcrypt.hash(password, salt))
     .then((hashedPassword) => {
       // Create a user and save it in the database
-      
+
       return User.create({ username, email, password: hashedPassword });
     })
     .then((user) => {
@@ -94,7 +94,7 @@ router.get("/auth/login", isLoggedOut, (req, res) => {
 router.post("/auth/login", isLoggedOut, (req, res, next) => {
   const { username, email, password } = req.body;
 
- 
+
 
   // Check that username, email, and password are provided
   if (username === "" || email === "" || password === "") {
@@ -155,13 +155,20 @@ router.get("/auth/logout", isLoggedIn, (req, res) => {
       res.status(500).render("auth/logout", { errorMessage: err.message });
       return;
     }
-    
     //res.redirect("/");
     res.render("auth/login", { errorMessage: "You are logged out !!" });
     return;
-   
-    
   });
+});
+
+//GET /cities/new
+router.get("/cities/cities-create", isLoggedIn, (req, res) => {
+  res.render("cities/new");
+});
+
+// POST /cities 
+router.post("/cities", isLoggedIn, (req, res) => {
+  // Обработка создания нового города здесь
 });
 
 module.exports = router;

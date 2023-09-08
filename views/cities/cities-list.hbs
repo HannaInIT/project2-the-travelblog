@@ -1,30 +1,42 @@
-<section class="cities-container">
- 
-    <!--<h1>About us</h1>
-    <P> Germany has amazing attractions to offer tourists, including elegant palaces and castles, meandering rivers, extensive Alps and medieval cathedrals. The contemporary museums and galleries that display the country’s complex history are also top rated tourist attractions in Germany. With a huge list of must see attractions in Germany, it can be hard to decide what to see first. In this article, you will interact with the top ten tourist attractions in Germany you should explore.</P>
-    -->
-    <h2>Cities in Germany</h2>
-
-    <div class="cities-summary">
-        <ul class="city-list">
-            {{#each cities}}
-            <li class="city">
-                <h2>{{this.title}}</h2>
-                <div class="city-details">
-                    <div class="border">
-                        <span class="border">
-                            <img src="{{this.imageUrl}}" alt="{{this.title}} Image">
-                        </span>
-                    </div>
-                    <p>Rating: {{this.rating}}</p>
-                    <p>Season: {{this.season}}</p>
-                    <p><a href="/cities/{{this._id}}">More details </a> |  <a href="/cities/{{this._id}}/edit">Edit</a></p>
-                    <form action="/cities/{{this._id}}/delete" method="POST">
-                        <button>Delete</button>
-                    </form>
-                </div>
-            </li>
-            {{/each}}
-        </ul>
+<body>
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <div class="my-4">
+                <p class="display-6 font-size: 20px; font-weight-bold; text-primary text-sm"
+                    style="white-space: nowrap;">Cities in Germany</p>
+            </div>
+        </div>
     </div>
-</section>
+
+<div class="container mt-5">
+    <div class="row">
+        {{#if cities}}
+        {{#each cities}}
+        <div class="col-md-4">
+            <div class="list-group-item">
+                <h2>{{this.title}}</h2>
+                <img src="{{imageUrl}}" alt="{{this.title}}" width="300" height="300">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="btn-group" role="group" aria-label="Actions">
+                            <form action="/cities/{{this._id}}/delete" method="POST">
+                                <button type="submit" class="btn btn-outline-danger" name="delete">Delete</button>
+                            </form>
+                            <form action="/cities/{{this._id}}/edit">
+                                <button type="submit" class="btn btn-outline-success" name="update">Update</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="col-md-12">
+            <p>No created cities.</p>
+        </div>
+        {{/if}}
+    </div>
+</div>
+
+</body>

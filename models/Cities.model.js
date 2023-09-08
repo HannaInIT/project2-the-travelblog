@@ -8,7 +8,6 @@ const citiesSchema = new Schema({
     season: {
         type: String,
         enum: ['Winter', 'Spring', 'Summer', 'Autumn']}
-    
     },
     {
         timestamps: true

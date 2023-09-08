@@ -21,3 +21,20 @@
 
 
 <a href="/cities">Back</a>
+
+//////
+<p><strong>Description:</strong>{{this.description}}</p>
+<p><strong>Rating:</strong>{{this.rating}}</p>
+<p><strong>Season:</strong>{{this.season}}</p>
+
+<div class="row">
+                        <div class="col-md-8">
+                            <div class="btn-group" role="group" aria-label="Actions">
+                                <form action="/cities/{{this._id}}/delete" method="POST">
+                                    <button type="submit" class="btn btn-outline-danger" name="delete">Delete</button>
+                                </form>
+                                <form action="/cities/{{this._id}}/edit">
+                                    <button type="submit" class="btn btn-outline-success" name="update">Update</button>
+                                </form>
+                            </div>
+                        </div>

@@ -1,39 +1,50 @@
-<h2>Edit the Cities: {{cities.title}}</h2>
+<body>
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <div class="my-4">
+                <p class="display-6 font-size: 20px; font-weight-bold; text-primary text-sm"
+                    style="white-space: nowrap;">Update city</p>
+            </div>
+        </div>
+    </div>
 
+    <form method="POST" action="/cities/{{cities._id}}/edit">
+        <div class="border">
+            <p><label> Title:
+                    <input type="text" name="title" value="{{cities.title}}" />
+                </label></p>
 
-<form method="POST" action="/cities/{{cities._id}}/edit">
-<div class="border">
-    <p><label> Title:
-        <input type="text" name="title" value="{{cities.title}}" />
-    </label></p>
+            <p>
+                <label for="imageUrl">Current Image:</label>
+                <img src="{{ cities.imageUrl }}" alt="Current Image">
+            </p>
 
-    <p><label> Description:
-        <textarea name="description" cols="30" rows="4">{{cities.description}}</textarea>
-    </label></p>
+            <p>
+                <label for="imageUrl">New Image:</label>
+                <input type="text" id="imageUrl" name="imageUrl" value="{{ cities.imageUrl }}"
+                    placeholder="please, provide a working link for the image">
+            </p>
 
-    <p><label> Rate:
-        <input type="number" name="rating" value="{{cities.rating}}" />
-    </label></p>
-   
-    <p>
-        <label for="imageUrl">Current Image:</label>
-        <img src="{{ cities.imageUrl }}" alt="Current Image">
-    </p>
-    <p>
-        <label for="imageUrl">New Image:</label>
-        <input type="text" id="imageUrl" name="imageUrl" value="{{ cities.imageUrl }}" placeholder="please, provide a working link for the image">
-    </p>
+            <p><label> Description:
+                    <textarea name="description" cols="30" rows="4">{{cities.description}}</textarea>
+                </label></p>
 
-    <label for="season"> Season:
-        <select id="seasons" value="{{cities.season}}">
-            <option label="Winter">Winter</option>
-            <option label="Spring">Spring</option>
-            <option label="Summer">Summer</option>
-            <option label="Autumn">Autumn</option>
-        </select>
-    </label>
+            <p><label> Rate:
+                    <input type="number" name="rating" value="{{cities.rating}}" />
+                </label></p>
 
-    <button>Save changes</button>
-</div>
+            <label for="season"> Season:
+                <select id="seasons" value="{{cities.season}}">
+                    <option label="Winter">Winter</option>
+                    <option label="Spring">Spring</option>
+                    <option label="Summer">Summer</option>
+                    <option label="Autumn">Autumn</option>
+                </select>
+            </label>
 
-</form>
+            <button>Save changes</button>
+        </div>
+
+    </form>
+
+</body>

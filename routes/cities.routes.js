@@ -47,10 +47,7 @@ router.post("/cities/cities-create", (req, res, next) => {
         description: req.body.description,
         rating: req.body.rating,
         imageUrl: req.body.imageUrl,
-        population : req.body.population,
         season: req.body.season,
-       
-
     };
 
     console.log("***** in the create form funciton");

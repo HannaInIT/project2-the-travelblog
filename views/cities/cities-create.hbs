@@ -1,38 +1,49 @@
-<h2>Create City</h2>
+<body>
 
-<form method="POST" action="/cities/cities-create">
-
-<div class="border">
-   
-
-    <label> Title:
-        <input type="text" name="title" />
-    </label></p>
-
-    <p><label> Description:
-        <textarea name="description" cols="30" rows="2"> </textarea>
-    </label></p>
-
-    <p><label> Rate :
-        <input type="number" name="rating" min="1" max="5" />
-    </label></p>
-
-    <p><label> Images:
-        <input type="text" name="imageUrl" placeholder="please, provide a link to the image" />
-    </label></p>
-
-    <label for="season"> Season:
-    <select name="season" id="season">
-        <option value="Winter">Winter</option>
-        <option value="Spring">Spring</option>
-        <option value="Summer">Summer</option>
-        <option value="Autumn">Autumn</option>
-    </select>
-
-    </label></p>
-
-    <button type="submit"> Create </button>
-
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <div class="my-4">
+                <p class="display-6 font-size: 20px; font-weight-bold; text-primary text-sm"
+                    style="white-space: nowrap;">Create new city</p>
+            </div>
+        </div>
     </div>
 
-</form>
+
+    <form method="POST" action="/cities/cities-create">
+
+        <div class="border">
+
+            <label> Title:
+                <input type="text" name="title" />
+            </label></p>
+
+            <p><label> Description:
+                    <textarea name="description" cols="30" rows="2"> </textarea>
+                </label></p>
+
+            <p><label> Rate :
+                    <input type="number" name="rating" min="1" max="5" />
+                </label></p>
+
+            <p><label> Images:
+                    <input type="text" name="imageUrl" placeholder="please, provide a link to the image" />
+                </label></p>
+
+            <label for="season"> Season:
+                <select name="season" id="season">
+                    <option value="Winter">Winter</option>
+                    <option value="Spring">Spring</option>
+                    <option value="Summer">Summer</option>
+                    <option value="Autumn">Autumn</option>
+                </select>
+
+            </label></p>
+
+            <button type="submit"> Create </button>
+
+        </div>
+
+    </form>
+
+</body>
