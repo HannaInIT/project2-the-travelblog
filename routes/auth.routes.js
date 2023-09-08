@@ -161,14 +161,6 @@ router.get("/auth/logout", isLoggedIn, (req, res) => {
   });
 });
 
-//GET /cities/new
-router.get("/cities/cities-create", isLoggedIn, (req, res) => {
-  res.render("cities/new");
-});
 
-// POST /cities 
-router.post("/cities", isLoggedIn, (req, res) => {
-  // Обработка создания нового города здесь
-});
 
 module.exports = router;

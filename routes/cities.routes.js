@@ -2,6 +2,8 @@ const express = require('express');
 const Cities = require("../models/Cities.model");
 const router = express.Router();
 
+const isLoggedIn = require("../middleware/isLoggedIn.js");
+
 
 // READ: display all Cities
 router.get("/cities", (req, res, next) => {
@@ -24,7 +26,7 @@ router.get("/cities", (req, res, next) => {
 
 
 // CREATE: display form
-router.get("/cities/cities-create", (req, res, next) => {
+router.get("/cities/cities-create", isLoggedIn, (req, res, next) => {
     Cities.find()
         .then( citiesFromDB => {
             const data = {
@@ -40,13 +42,13 @@ router.get("/cities/cities-create", (req, res, next) => {
 
 
 // CREATE: process form
-router.post("/cities/cities-create", (req, res, next) => {
+router.post("/cities/cities-create", isLoggedIn, (req, res, next) => {
 
     const newCities = {
         title: req.body.title,
+        imageUrl: req.body.imageUrl,
         description: req.body.description,
         rating: req.body.rating,
-        imageUrl: req.body.imageUrl,
         season: req.body.season,
     };
 
