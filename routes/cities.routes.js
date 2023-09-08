@@ -91,11 +91,11 @@ router.get('/cities/:citiesId/edit', async (req, res, next) => {
 // UPDATE: process form
 router.post('/cities/:citiesId/edit', (req, res, next) => {
     const { citiesId } = req.params;
-    const { title, description, rating, population, season, imageUrl } = req.body;
+    const { title, description, rating, season, imageUrl } = req.body;
     console.log("*&*&*******  Cities ID 2  ");
     Cities.findById(citiesId)
     .then((city) => {
-Cities.findByIdAndUpdate(citiesId, { title, description, rating, population, season, imageUrl: imageUrl ? imageUrl : city.imageUrl }, { new: true })
+Cities.findByIdAndUpdate(citiesId, { title, description, rating, season, imageUrl: imageUrl ? imageUrl : city.imageUrl }, { new: true })
         // .then(updatedCities => res.redirect(`/cities/${updatedCities.id}`)) // go to the details page to see the updates
         .then(() => res.redirect('/cities'))
     })
